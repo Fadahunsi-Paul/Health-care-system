@@ -44,10 +44,10 @@ def update_doctor(request, pk):
     else:
         form = DoctorForm(instance=doctor)
     return render(request, 'main/edit-doctor.html',{'form':form})  
-    
+
 def delete_doctor(request, pk):
     delete = get_object_or_404(Doctors, id=pk)
     if request.method == 'POST':
-        delete.delete()
-        return redirect('care:doctor')
-    return render(request,'main/doctors.html',{'delete':delete}) 
+        delete.delete() 
+        return redirect('care:doctor-page')
+    return render(request, 'main/delete-doctor.html', {'delete': delete})
