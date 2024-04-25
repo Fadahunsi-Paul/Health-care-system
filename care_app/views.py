@@ -54,3 +54,6 @@ def delete_doctor(request, pk):
 
 def patients(request):
     ...
+
+def add_patients(request):
+    ...
