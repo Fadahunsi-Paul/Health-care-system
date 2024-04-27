@@ -57,3 +57,9 @@ def patients(request):
 
 def add_patients(request):
     ...
+
+def update_patients(request):
+    ...
+
+def delete_patients(request):
+    ...
