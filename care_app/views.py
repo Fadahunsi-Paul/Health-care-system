@@ -53,7 +53,9 @@ def delete_doctor(request, pk):
     return render(request, 'main/delete-doctor.html', {'delete': delete})
 
 def patients(request):
-    ...
+    patients = Patients.objects.all()
+    context = {'patients':patients}
+    return render(request,'main/patients.html',context)
 
 def add_patients(request):
     ...
