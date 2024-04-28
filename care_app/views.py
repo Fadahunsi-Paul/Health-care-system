@@ -83,5 +83,10 @@ def update_patients(request,pk):
     return render(request, 'main/edit-patient.html',{'form':form})
 
 
-def delete_patients(request):
-    ...
+def delete_patients(request,pk):
+    delete = get_object_or_404(Patients, id=pk)
+    if request.method == 'POST':
+        delete.delete() 
+        return redirect('care:patients-page')
+    return render(request, 'main/delete-patient.html', {'delete': delete})
+    
