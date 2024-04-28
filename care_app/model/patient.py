@@ -3,6 +3,8 @@ from health_care.basemodel import TimeBaseModel
 from django.core.validators import RegexValidator
 from care_app.utils import GENDER_CHOICES
 from django.utils import timezone
+from care_app.utils import patient_age
+from datetime import date
 
 class Patients(TimeBaseModel):
     first_name = models.CharField(max_length=100,blank=False)
@@ -14,12 +16,24 @@ class Patients(TimeBaseModel):
     address = models.TextField()
     image = models.ImageField(null=True,blank=True)
 
+    
+
     class Meta:
         verbose_name_plural = 'Patients'
 
     def __str__(self):
         return self.email
-    
+
+
+    def age(self):
+        try:
+            today = date.today()
+            date_of_birth = self.date_of_birth
+            age = today.year - date_of_birth.year - ((today.month, today.day) < (date_of_birth.month, date_of_birth.day))
+            return age
+        except ValueError:
+            return None
+
     @property
     def imageUrl(self):
         try:
