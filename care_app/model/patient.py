@@ -3,7 +3,6 @@ from health_care.basemodel import TimeBaseModel
 from django.core.validators import RegexValidator
 from care_app.utils import GENDER_CHOICES
 from django.utils import timezone
-from care_app.utils import patient_age
 from datetime import date
 
 class Patients(TimeBaseModel):

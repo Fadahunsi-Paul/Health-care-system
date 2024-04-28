@@ -3,7 +3,7 @@ from .model.appointment import Appointment
 from .model.department import Department
 from .model.doctor import Doctors
 from .model.patient import Patients
-from .forms import DoctorForm
+from .forms import DoctorForm,PatientForm
 from django.contrib import messages
 
 # Create your views here.
@@ -58,7 +58,15 @@ def patients(request):
     return render(request,'main/patients.html',context)
 
 def add_patients(request):
-    ...
+    form = PatientForm()
+    if request.method == 'POST':
+        form = PatientForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('care:patients-page')
+    else:
+        form=PatientForm()
+    return render(request,'main/add-patient.html',{'form':form})
 
 def update_patients(request):
     ...
