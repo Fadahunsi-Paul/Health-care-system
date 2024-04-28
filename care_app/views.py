@@ -68,8 +68,20 @@ def add_patients(request):
         form=PatientForm()
     return render(request,'main/add-patient.html',{'form':form})
 
-def update_patients(request):
-    ...
+def update_patients(request,pk):
+    patient = Patients.objects.get(id=pk)
+    if request.method == 'POST':
+        form = PatientForm(request.POST, request.FILES, instance=patient)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Patient updated Successfully')
+            return redirect('care:patients-page')
+        else:
+            messages.error(request, 'Correct the Errors below') 
+    else:
+        form = PatientForm(instance=patient)
+    return render(request, 'main/edit-patient.html',{'form':form})
+
 
 def delete_patients(request):
     ...
