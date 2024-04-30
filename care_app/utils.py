@@ -1,9 +1,9 @@
 from datetime import datetime
 
 GENDER_CHOICES = [
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other'),
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other'),
 ]
 
 STATUS_CHOICES = {

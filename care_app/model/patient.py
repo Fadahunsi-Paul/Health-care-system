@@ -10,7 +10,7 @@ class Patients(TimeBaseModel):
     second_name = models.CharField(max_length=100,blank=False)
     email = models.EmailField(unique=True) 
     date_of_birth = models.DateField(default=timezone.now)
-    gender = models.CharField(max_length=1,choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=20,choices=GENDER_CHOICES)
     phone_number = models.CharField(max_length=12, validators=[RegexValidator(r'^\d{10,15}$')])
     address = models.TextField()
     image = models.ImageField(null=True,blank=True)

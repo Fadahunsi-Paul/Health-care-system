@@ -7,7 +7,7 @@ from django.utils import timezone
 class Doctors(TimeBaseModel):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    gender = models.CharField(max_length=1,choices=GENDER_CHOICES,blank=True) 
+    gender = models.CharField(max_length=20,choices=GENDER_CHOICES,blank=True) 
     date_of_birth = models.DateField(default=timezone.now) 
     specialty = models.ForeignKey('Department', on_delete = models.CASCADE)
     email = models.EmailField(unique=True)

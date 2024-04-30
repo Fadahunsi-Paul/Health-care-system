@@ -12,12 +12,20 @@ from django.contrib import messages
 def home(request):
     total_doctors = Doctors.objects.count()
     total_patients = Patients.objects.count()
+    doctors = Doctors.objects.all()
     context = {
         'total_doctors':total_doctors,
+        'doctors':doctors,
         'total_patients':total_patients,
     }
     return render(request, 'main/index.html',context) 
 
+def doctor_profile(request,pk):
+    profile = Doctors.objects.get(id=pk)
+    context = {
+        'profile':profile,
+    }
+    return render(request,'main/profile.html',context)
 
 def doctor(request):
     doctors = Doctors.objects.all()
