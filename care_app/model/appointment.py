@@ -14,7 +14,7 @@ class Appointment(TimeBaseModel):
     phone_number = models.CharField(max_length=15)
     reason = models.TextField() 
     time = models.TimeField(default='00:00')
-    statu = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES,default='Select')
     department_of_appointment = models.ForeignKey(Department, models.CASCADE)
 
     def __str__(self):
