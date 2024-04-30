@@ -6,6 +6,12 @@ GENDER_CHOICES = [
         ('O', 'Other'),
 ]
 
+STATUS_CHOICES = {
+        'Pending':'Pending',
+        'In_Progress':'In Progress',
+        'Completed':'Completed'
+}
+
 # def patient_age(birth_year, birth_month, birth_day):
 #     today = datetime.today()
 #     birth_date = datetime(birth_year, birth_month, birth_day)
