@@ -10,12 +10,20 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request, 'main/index.html') 
+    total_doctors = Doctors.objects.count()
+    total_patients = Patients.objects.count()
+    context = {
+        'total_doctors':total_doctors,
+        'total_patients':total_patients,
+    }
+    return render(request, 'main/index.html',context) 
 
 
 def doctor(request):
     doctors = Doctors.objects.all()
-    context = {'doctors':doctors}
+    context = {
+        'doctors':doctors,
+        }
     return render(request,'main/doctors.html',context)
 
 
@@ -81,7 +89,6 @@ def update_patients(request,pk):
     else:
         form = PatientForm(instance=patient)
     return render(request, 'main/edit-patient.html',{'form':form})
-
 
 def delete_patients(request,pk):
     delete = get_object_or_404(Patients, id=pk)
