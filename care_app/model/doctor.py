@@ -11,6 +11,7 @@ class Doctors(TimeBaseModel):
     date_of_birth = models.DateField(default=timezone.now) 
     specialty = models.ForeignKey('Department', on_delete = models.CASCADE)
     email = models.EmailField(unique=True)
+    doctor_id = models.CharField(max_length=50,unique=True,default="Doc_0000")
     phone_number = models.CharField(max_length=15,validators=[RegexValidator(r'^\d{10,15}$')])
     image = models.ImageField(upload_to='doc-pics/',blank=True,null =True) 
 

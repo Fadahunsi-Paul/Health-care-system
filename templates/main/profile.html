@@ -160,16 +160,16 @@
                     </div>
 
                     <div class="col-sm-5 col-6 text-right m-b-30">
-                        <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+                        <a href="{% url 'care:update_doctor' profile.id %}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
                     </div>
                 </div>
                 <div class="card-box profile-header">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="profile-view">
-                                <div class="profile-img-wrap">
+                                <div class="profile-img-wrap"> 
                                     <div class="profile-img">
-                                        <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                                        <a href="{% url 'care:update_doctor' profile.id %}"><img class="avatar" src="{{profile.image.url}}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="profile-basic">
@@ -178,7 +178,7 @@
                                             <div class="profile-info-left">
                                                 <h3 class="user-name m-t-0 mb-0">{{profile.first_name}} {{profile.last_name}}</h3>
                                                 <small class="text-muted">{{profile.specialty}}</small>
-                                                <div class="staff-id">Employee ID : DR-0001</div>
+                                                <div class="staff-id">Doctor ID : {{profile.doctor_id}}</div>
                                                 <div class="staff-msg"><a href="chat.html" class="btn btn-primary">Send Message</a></div>
                                             </div>
                                         </div>

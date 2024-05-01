@@ -36,6 +36,13 @@ class DoctorForm(forms.ModelForm):
     
     gender=forms.RadioSelect() 
 
+    doctor_id= forms.CharField(required=True,
+    widget = forms.TextInput(
+        attrs={
+            'class':'form-control'
+        }
+    ))
+
     specialty=forms.ModelChoiceField(
     queryset=Department.objects.all(),
     required=True,
