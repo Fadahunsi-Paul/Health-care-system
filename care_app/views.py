@@ -107,3 +107,6 @@ def delete_patients(request,pk):
     
 def appointment(request):
     ...
+
+def add_appointment(requet):
+    ...
