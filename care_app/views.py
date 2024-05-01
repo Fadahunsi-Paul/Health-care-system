@@ -110,3 +110,6 @@ def appointment(request):
 
 def add_appointment(requet):
     ...
+
+def update_appointment(request):
+    ...
