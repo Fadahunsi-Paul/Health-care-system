@@ -105,3 +105,5 @@ def delete_patients(request,pk):
         return redirect('care:patients-page')
     return render(request, 'main/delete-patient.html', {'delete': delete})
     
+def appointment(request):
+    ...
