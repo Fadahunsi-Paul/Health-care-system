@@ -5,9 +5,9 @@ from .patient import Patients
 from health_care.basemodel import TimeBaseModel
 from .department import Department
 from care_app.utils import STATUS_CHOICES
-
+    
 class Appointment(TimeBaseModel):
-    apppointment_id = models.CharField(max_length=100,blank=False,unique=True,null=False,default='A000')
+    appointment_id = models.CharField(max_length=100,blank=False,unique=True,null=False,default='A000')
     patient = models.ForeignKey(Patients, models.CASCADE) 
     doctor = models.ForeignKey(Doctors, on_delete=models.PROTECT)
     date = models.DateTimeField() 

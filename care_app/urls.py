@@ -17,4 +17,5 @@ urlpatterns = [
     path('doctor_profile/<int:pk>/',views.doctor_profile,name='doctor-profile'),
 
     path('appointment/',views.appointment,name='appointment-page'),
+    path('add_appointment/',views.add_appointment,name='add-appointment'),
 ]
