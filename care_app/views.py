@@ -106,7 +106,11 @@ def delete_patients(request,pk):
     return render(request, 'main/delete-patient.html', {'delete': delete})
     
 def appointment(request):
-    ...
+    appointment = Appointment.objects.all()
+    context = {
+        'appointment':appointment,
+    }
+    return render(request,'main/appointment.html',context)
 
 def add_appointment(requet):
     ...
