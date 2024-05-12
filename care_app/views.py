@@ -110,7 +110,7 @@ def appointment(request):
     context = {
         'appointment':appointment,
     }
-    return render(request,'main/appointment.html',context)
+    return render(request,'main/appointments.html',context)
 
 def add_appointment(requet):
     ...
