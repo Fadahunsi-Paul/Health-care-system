@@ -126,5 +126,16 @@ def add_appointment(request):
         form = AppointmentForm()
     return render(request,'main/add-appointment.html',{'form':form}) 
 
-def update_appointment(request):
-    ...
+def update_appointment(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST, request.FILES, instance=appointment)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Appointment updated Successfully')
+            return redirect('care:appointment-page')
+        else:
+            messages.error(request, 'Correct the Errors below') 
+    else:
+        form = AppointmentForm(instance=appointment)
+    return render(request, 'main/edit-appointment.html',{'form':form})

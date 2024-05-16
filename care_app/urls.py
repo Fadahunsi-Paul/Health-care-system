@@ -18,4 +18,5 @@ urlpatterns = [
 
     path('appointment/',views.appointment,name='appointment-page'),
     path('add_appointment/',views.add_appointment,name='add-appointment'),
+    path('update_appointment/<int:pk>/',views.update_appointment,name='update-appointment'),
 ]

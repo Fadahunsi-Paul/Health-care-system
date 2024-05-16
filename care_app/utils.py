@@ -8,7 +8,7 @@ GENDER_CHOICES = [
 
 STATUS_CHOICES = {
         'Pending':'Pending',
-        'In_Progress':'In Progress',
+        'In Progress':'In Progress',
         'Completed':'Completed'
 }
 
