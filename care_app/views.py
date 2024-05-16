@@ -139,3 +139,11 @@ def update_appointment(request, pk):
     else:
         form = AppointmentForm(instance=appointment)
     return render(request, 'main/edit-appointment.html',{'form':form})
+
+def delete_appointment(request, pk):
+    delete = get_object_or_404(Appointment, id=pk)
+    if request.method == "POST":
+        delete.delete()
+        return redirect("care:appontment-page")
+    return render (request, 'main/delete-appointment.html', {'delete':delete})
+
