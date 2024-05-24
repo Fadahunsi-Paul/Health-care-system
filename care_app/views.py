@@ -3,8 +3,10 @@ from .model.appointment import Appointment
 from .model.department import Department
 from .model.doctor import Doctors
 from .model.patient import Patients
-from .forms import DoctorForm,PatientForm,AppointmentForm
 from django.contrib import messages
+from care_app.myforms.doctor_form import DoctorForm
+from care_app.myforms.patient_form import PatientForm
+from care_app.myforms.appointment_form import AppointmentForm
 
 # Create your views here.
 
@@ -146,4 +148,5 @@ def delete_appointment(request, pk):
         delete.delete()
         return redirect("care:appontment-page")
     return render (request, 'main/delete-appointment.html', {'delete':delete})
+
 

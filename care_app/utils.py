@@ -12,6 +12,10 @@ STATUS_CHOICES = {
         'Completed':'Completed'
 }
 
+DOC_STATUS = {
+        'Available' : 'Available',
+        'Unavailable': 'Unavailable'
+}
 # def patient_age(birth_year, birth_month, birth_day):
 #     today = datetime.today()
 #     birth_date = datetime(birth_year, birth_month, birth_day)
