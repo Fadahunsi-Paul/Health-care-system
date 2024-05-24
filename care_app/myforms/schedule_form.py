@@ -38,7 +38,7 @@ class ScheduleForm(forms.ModelForm):
         )
     )
 
-    messaage = forms.CharField(required=True,
+    message = forms.CharField(required=True,
         widget=forms.Textarea(
             attrs={'class':'form-control'}
         )

@@ -184,10 +184,10 @@
                                 {% for schedule in schedules %}
 								<tbody>
 									<tr>
-										<td><img width="28" height="28" src="{{schedule.image.url}}" class="rounded-circle m-r-5" alt=""> {{schedule.doctor_name}}</td>
-										<td>{{schedule.doctor_name.department}}</td>
+										<td><img width="28" height="28" src="{{schedule.doctor_name.image.url}}" class="rounded-circle m-r-5" alt=""> {{schedule.doctor_name.first_name}} {{schedule.doctor_name.last_name}}</td>
+										<td>{{schedule.doctor_name.specialty}}</td>
 										<td>{{schedule.days}}</td>
-										<td>{{schedule.start_time}}-{{schedule.end_time}}</td>
+										<td>{{schedule.start_time}} - {{schedule.end_time}}</td>
 										<td><span class="custom-badge status-green">{{schedule.status}}</span></td>
 										<td class="text-right">
 											<div class="dropdown dropdown-action">
