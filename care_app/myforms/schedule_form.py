@@ -3,7 +3,7 @@ from care_app.model.doctor import Doctors
 from care_app.model.schedule import Schedule
 
 class ScheduleForm(forms.ModelForm):
-    doctor_name = forms.ModelChoiceField(required=True,
+    doctor_name = forms.ModelChoiceField(
         queryset=Doctors.objects.all(),
         required = True,
         widget=forms.Select(

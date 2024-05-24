@@ -155,15 +155,14 @@ def schedule(request):
     return render (request, 'main/schedule.html', {'schedules':schedules})
 
 def add_schedule(request):
-    form = ScheduleForm()
     if request.method == 'POST':
         form = ScheduleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request,'Schedule created Successfully')
-            return redirect('care:schedule-page')
+            return redirect("care:schedule-page") 
         else:
-            messages.errors(request,'Schedule created Succussfully')
-    form = ScheduleForm()
-    return render(request, 'main/add-schedule.html',{'form':form})
-    
+            messages.error(request,'Error creating schedule')
+    else:
+        form = ScheduleForm()
+    return render(request,'main/add-schedule.html',{'form':form})
