@@ -1,5 +1,5 @@
 from django.db import models
-from .model.doctor import Doctors
+from .doctor import Doctors
 from health_care.basemodel import TimeBaseModel
 from care_app.utils import DOC_STATUS
 
