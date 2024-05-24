@@ -1,18 +1,18 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
 
-
+<!-- schedule23:20-->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico'%}">
-    <title>Health Solution</title> 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Health Solution</title>
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/select2.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap-datetimepicker.min.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css'%}">
     <!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
@@ -25,7 +25,7 @@
         <div class="header">
 			<div class="header-left">
 				<a href="index-2.html" class="logo">
-					<img src="{% static '/assets/img/logo.png' %}" width="35" height="35" alt=""> <span>Preclinic</span>
+					<img src="{% static 'assets/img/logo.png'%}" width="35" height="35" alt=""> <span>Preclinic</span>
 				</a>
 			</div>
 			<a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
@@ -108,11 +108,9 @@
                 </li>
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
-                        <span class="user-img">
-							<img class="rounded-circle" src="{% static 'assets/img/user.jpg' %}" width="24" alt="Admin">
-							<span class="status online"></span>
-						</span>
-						<span>Admin</span>
+                        <span class="user-img"><img class="rounded-circle" src="{% static 'assets/img/user.jpg'%}" width="40" alt="Admin">
+							<span class="status online"></span></span>
+                        <span>Admin</span>
                     </a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="profile.html">My Profile</a>
@@ -123,7 +121,7 @@
                 </li>
             </ul>
             <div class="dropdown mobile-user-menu float-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="profile.html">My Profile</a>
                     <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
@@ -155,11 +153,6 @@
                         <li>
                             <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
                         </li>
-						
-						
-                        
-                        
-                        
                     </ul>
                 </div>
             </div>
@@ -167,236 +160,51 @@
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                        <div class="dash-widget">
-							<span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span>
-							<div class="dash-widget-info text-right">
-								<h3>{{ total_doctors }}</h3>
-								<span class="widget-title1">Doctors <i class="fa fa-check" aria-hidden="true"></i></span>
-							</div>
-                        </div>
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Schedule</h4>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                        <div class="dash-widget">
-                            <span class="dash-widget-bg2"><i class="fa fa-user-o"></i></span>
-                            <div class="dash-widget-info text-right">
-                                <h3>{{total_patients}}</h3>
-                                <span class="widget-title2">Patients <i class="fa fa-check" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                        <div class="dash-widget">
-                            <span class="dash-widget-bg3"><i class="fa fa-user-md" aria-hidden="true"></i></span>
-                            <div class="dash-widget-info text-right">
-                                <h3>72</h3>
-                                <span class="widget-title3">Attend <i class="fa fa-check" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                        <div class="dash-widget">
-                            <span class="dash-widget-bg4"><i class="fa fa-heartbeat" aria-hidden="true"></i></span>
-                            <div class="dash-widget-info text-right">
-                                <h3>618</h3>
-                                <span class="widget-title4">Pending <i class="fa fa-check" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
+                    <div class="col-sm-8 col-9 text-right m-b-20">
+                        <a href="add-schedule.html" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Schedule</a>
                     </div>
                 </div>
-				</div>
 				<div class="row">
-					<div class="col-12 col-md-6 col-lg-8 col-xl-8">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="card-title d-inline-block">Upcoming Appointments</h4> <a href="appointments.html" class="btn btn-primary float-right">View all</a>
-							</div>
-							<div class="card-body p-0">
-								<div class="table-responsive">
-									<table class="table mb-0">
-										<thead class="d-none">
-											<tr>
-												<th>Patient Name</th>
-												<th>Doctor Name</th>
-												<th>Timing</th>
-												<th class="text-right">Status</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-											<tr>
-												<td style="min-width: 200px;">
-													<a class="avatar" href="profile.html">B</a>
-													<h2><a href="profile.html">Bernardo Galaviz <span>New York, USA</span></a></h2>
-												</td>                 
-												<td>
-													<h5 class="time-title p-0">Appointment With</h5>
-													<p>Dr. Cristina Groves</p>
-												</td>
-												<td>
-													<h5 class="time-title p-0">Timing</h5>
-													<p>7.00 PM</p>
-												</td>
-												<td class="text-right">
-													<a href="appointments.html" class="btn btn-outline-primary take-btn">Take up</a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-border table-striped custom-table mb-0">
+								<thead>
+									<tr>
+										<th>Doctor Name</th>
+										<th>Department</th>
+										<th>Available Days</th>
+										<th>Available Time</th>
+										<th>Status</th>
+										<th class="text-right">Action</th>
+									</tr>
+								</thead>
+                                {% for schedule in schedules %}
+								<tbody>
+									<tr>
+										<td><img width="28" height="28" src="{{schedule.image.url}}" class="rounded-circle m-r-5" alt=""> {{schedule.doctor_name}}</td>
+										<td>{{schedule.doctor_name.department}}</td>
+										<td>{{schedule.days}}</td>
+										<td>{{schedule.start_time}}-{{schedule.end_time}}</td>
+										<td><span class="custom-badge status-green">{{schedule.status}}</span></td>
+										<td class="text-right">
+											<div class="dropdown dropdown-action">
+												<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+												<div class="dropdown-menu dropdown-menu-right">
+													<a class="dropdown-item" href="edit-schedule.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+													<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_schedule"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+                                {% endfor %}
+							</table>
 						</div>
-					</div>
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                        <div class="card member-panel">
-							<div class="card-header bg-white">
-								<h4 class="card-title mb-0">Doctors</h4>
-							</div>
-                            {% for doctor in doctors %}
-                            <div class="">
-                            {% comment %} <div class="card-body"> {% endcomment %}
-                                <ul class="contact-list">
-                                    <li>
-                                        <div class="contact-cont">
-                                            <div class="float-left user-img m-r-10">
-                                                <a href="{% url 'care:doctor-profile' doctor.id %}" title="John Doe"><img src="{{doctor.image.url}}" alt="" class="w-40 rounded-circle"><span class="status online"></span></a>
-                                            </div>
-                                            <div class="contact-info">
-                                                <span class="contact-name text-ellipsis">{{doctor.first_name}} {{doctor.last_name}}</span>
-                                                <span class="contact-date">{{doctor.specialty}}</span> 
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            {% endfor %}
-                            <div class="card-footer text-center bg-white">
-                                <a href="{% url 'care:doctor-page' %}" class="text-muted">View all Doctors</a>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-8 col-xl-8">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="card-title d-inline-block">New Patients </h4> <a href="patients.html" class="btn btn-primary float-right">View all</a>
-							</div>
-							<div class="card-block">
-								<div class="table-responsive">
-									<table class="table mb-0 new-patient-table">
-										<tbody>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt=""> 
-													<h2>John Doe</h2>
-												</td>
-												<td>Johndoe21@gmail.com</td>
-												<td>+1-202-555-0125</td>
-												<td><button class="btn btn-primary btn-primary-one float-right">Fever</button></td>
-											</tr>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt=""> 
-													<h2>Richard</h2>
-												</td>
-												<td>Richard123@yahoo.com</td>
-												<td>202-555-0127</td>
-												<td><button class="btn btn-primary btn-primary-two float-right">Cancer</button></td>
-											</tr>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt=""> 
-													<h2>Villiam</h2>
-												</td>
-												<td>Richard123@yahoo.com</td>
-												<td>+1-202-555-0106</td>
-												<td><button class="btn btn-primary btn-primary-three float-right">Eye</button></td>
-											</tr>
-											<tr>
-												<td>
-													<img width="28" height="28" class="rounded-circle" src="assets/img/user.jpg" alt=""> 
-													<h2>Martin</h2>
-												</td>
-												<td>Richard123@yahoo.com</td>
-												<td>776-2323 89562015</td>
-												<td><button class="btn btn-primary btn-primary-four float-right">Fever</button></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-				</div>
+                </div>
+                </div>
             </div>
             <div class="notification-box">
                 <div class="msg-sidebar notifications msg-noti">
@@ -608,18 +416,31 @@
                 </div>
             </div>
         </div>
+		<div id="delete_schedule" class="modal fade delete-modal" role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<img src="assets/img/sent.png" alt="" width="50" height="46">
+						<h3>Are you sure want to delete this Schedule?</h3>
+						<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
-    <div class="{% static 'sidebar-overlay' %}" data-reff=""></div>
-    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-	<script src="{% static 'assets/js/popper.min.js' %}"></script>
-    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
-    <script src="{% static 'assets/js/Chart.bundle.js' %}"></script>
-    <script src="{% static 'assets/js/chart.js' %}"></script>
-    <script src="{%static 'assets/js/app.js' %}"></script>
-
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js'%}"></script>
+	<script src="{% static 'assets/js/popper.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/jquery.slimscroll.js'%}"></script>
+    <script src="{% static 'assets/js/select2.min.js'%}"></script>
+    <script src="{% static 'assets/js/moment.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js'%}"></script>
+    <script src="{% static 'assets/js/app.js'%}"></script>
 </body>
 
 
-
+<!-- schedule23:21-->
 </html>

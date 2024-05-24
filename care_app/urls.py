@@ -20,4 +20,6 @@ urlpatterns = [
     path('add_appointment/',views.add_appointment,name='add-appointment'),
     path('update_appointment/<int:pk>/',views.update_appointment,name='update-appointment'),
     path('delete_appointment/<int:pk>/',views.delete_appointment,name='delete-appointment'),
+
+    path('schedule/',views.schedule,name= 'schedule-page'),
 ]

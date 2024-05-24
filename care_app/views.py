@@ -6,8 +6,9 @@ from .model.patient import Patients
 from django.contrib import messages
 from care_app.myforms.doctor_form import DoctorForm
 from care_app.myforms.patient_form import PatientForm
+from care_app.myforms.schedule_form import ScheduleForm
 from care_app.myforms.appointment_form import AppointmentForm
-
+from .model.schedule import Schedule
 # Create your views here.
 
 
@@ -149,4 +150,20 @@ def delete_appointment(request, pk):
         return redirect("care:appontment-page")
     return render (request, 'main/delete-appointment.html', {'delete':delete})
 
+def schedule(request):
+    schedules = Schedule.objects.all()
+    return render (request, 'main/schedule.html', {'schedules':schedules})
 
+def add_schedule(request):
+    form = ScheduleForm()
+    if request.method == 'POST':
+        form = ScheduleForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Schedule created Successfully')
+            return redirect('care:schedule-page')
+        else:
+            messages.errors(request,'Schedule created Succussfully')
+    form = ScheduleForm()
+    return render(request, 'main/add-schedule.html',{'form':form})
+    
