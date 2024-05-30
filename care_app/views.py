@@ -166,3 +166,17 @@ def add_schedule(request):
     else:
         form = ScheduleForm()
     return render(request,'main/add-schedule.html',{'form':form})
+
+def update_schedule(request, pk):
+    schedule = Schedule.objects.get(id=pk)
+    if request.method == 'POST':
+        form = ScheduleForm(request.POST, request.FILES, instance=schedule)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Schedule updated Successfully')
+            return redirect('care:schedule-page')
+        else:
+            messages.error(request, 'Correct the Errors below') 
+    else:
+        form = ScheduleForm(instance=schedule)
+    return render(request, 'main/edit-schedule.html',{'form':form})
