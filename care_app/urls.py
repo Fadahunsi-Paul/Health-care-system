@@ -24,4 +24,5 @@ urlpatterns = [
     path('schedule/',views.schedule,name='schedule-page'),
     path('add_schedule/',views.add_schedule,name='add-schedule'),
     path('update_schedule/<int:pk>/',views.update_schedule,name='update-schedule'),
+    path('delete_schedule/<int:pk>/',views.delete_schedule,name='delete-schedule'),
 ]

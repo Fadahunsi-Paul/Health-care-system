@@ -180,3 +180,10 @@ def update_schedule(request, pk):
     else:
         form = ScheduleForm(instance=schedule)
     return render(request, 'main/edit-schedule.html',{'form':form})
+
+def delete_schedule(request, pk):
+    delete = get_object_or_404(Schedule, id=pk)
+    if request.method == "POST":
+        delete.delete()
+        return redirect("care:schedule-page")
+    return render (request, 'main/delete-schedule.html', {'delete':delete})
