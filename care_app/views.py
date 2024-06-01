@@ -33,16 +33,25 @@ def doctor_profile(request,pk):
 
 def doctor(request):
     doctors = Doctors.objects.all()
+    roles = Department.objects.all()
     search = request.GET.get('search-input') or ''
+    specialty = request.GET.get('specialty') or ''
+    print(f"Search: {search}, Specialty: {specialty}")
+
     if search:
         doctors = doctors.filter(
             Q(first_name__icontains=search) |
             Q(last_name__icontains=search)
         ) 
+    if specialty:
+        role = Department.objects.get(name=specialty)
+        doctors = doctors.filter(specialty=role) 
 
     context = {
         'doctors':doctors,
         'search':search,
+        'roles':roles,
+        'specialty':specialty,
         }
     return render(request,'main/doctors.html',context)
 
