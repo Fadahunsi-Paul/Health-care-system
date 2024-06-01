@@ -9,6 +9,7 @@ from care_app.myforms.patient_form import PatientForm
 from care_app.myforms.schedule_form import ScheduleForm
 from care_app.myforms.appointment_form import AppointmentForm
 from .model.schedule import Schedule
+from django.db.models import Q
 # Create your views here.
 
 
@@ -32,8 +33,16 @@ def doctor_profile(request,pk):
 
 def doctor(request):
     doctors = Doctors.objects.all()
+    search = request.GET.get('search-input') or ''
+    if search:
+        doctors = doctors.filter(
+            Q(first_name__icontains=search) |
+            Q(last_name__icontains=search)
+        ) 
+
     context = {
         'doctors':doctors,
+        'search':search,
         }
     return render(request,'main/doctors.html',context)
 
