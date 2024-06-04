@@ -34,8 +34,8 @@ def doctor_profile(request,pk):
 def doctor(request):
     doctors = Doctors.objects.all()
     roles = Department.objects.all()
-    search = request.GET.get('search-input') or ''
-    specialty = request.GET.get('specialty') or ''
+    search = request.GET.get('search-input')
+    specialty = request.GET.get('specialty')
     print(f"Search: {search}, Specialty: {specialty}")
 
     if search:
@@ -205,3 +205,10 @@ def delete_schedule(request, pk):
         delete.delete()
         return redirect("care:schedule-page")
     return render (request, 'main/delete-schedule.html', {'delete':delete})
+
+def department(request):
+    departments = Department.objects.all()
+    context = {
+        'departments':departments,
+    }
+    return render (request, 'main/departments.html',context)
